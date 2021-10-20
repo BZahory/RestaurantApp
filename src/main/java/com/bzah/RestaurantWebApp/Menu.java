@@ -1,3 +1,5 @@
+package com.bzah.RestaurantWebApp;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
@@ -12,30 +14,8 @@ public class Menu {
         menu.put("oraCake", new Item(9.99, "oraCake"));
     }
 
-    public Item[] getItems(Scanner sc){ //returns a list of all the items and prices the customer wants
-
-        ArrayList<Item> items = new ArrayList<>();
-        boolean done = false;
-        Optional<Item> desiredItem = Optional.empty();
-
-        while(!done){
-            System.out.println("Would you like to add anything else to the order?");
-
-            if(sc.nextLine().toLowerCase().charAt(0)=='n') {
-                done = true;
-            }else {
-                System.out.println("What would you like to add to the order?");
-
-                desiredItem = Optional.ofNullable(menu.get(sc.nextLine()));
-
-                if (desiredItem.isPresent())
-                    items.add(desiredItem.get());
-                else
-                    System.out.println("That is not on the menu.");
-            }
-
-        }
-        return items.toArray(new Item[items.size()]);
+    public HashMap<String, Item> getMenu() {
+        return menu;
     }
 
 

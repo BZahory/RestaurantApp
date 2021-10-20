@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Place an order</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Add item</h1>
+<form action="#" th:action="@{/admin}" th:object="${nextItem}" method="post">
+  <p>Name: <input type="text" th:field="*{name}" /></p>
+  <p>Price: <input type="text" th:field="*{price}" /></p>
+
+  <p>Menu:</p>
+  <ul th:each="item : ${menu.menu.values()}">
+    <li th:text="${item.name}"></li>
+    <li th:text="${item.price}"></li>
+  </ul>
+
+  <p><input type="submit" value="Add" /></p>
+  <p>Order <a href="/order">here</a></p>
+
+</form>
+
+<form action="#" th:action="@{/admin}" th:object="${orders}" method="post">
+
+  <p>Menu:</p>
+  <ul th:each="order : ${orders}">
+    <li th:text="${order.getReceipt()}"></li>
+    <li th:text="${order.getNumber()}"></li>\
+  </ul>
+
+</form>
+
+</body>
+</html>

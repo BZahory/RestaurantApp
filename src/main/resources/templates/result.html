@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Order check</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Your order</h1>
+<p th:text="'id: ' + ${order.orderNumber}" />
+<p th:text="'content: ' + ${order.itemsString}" />
+
+<p>Your order:</p>
+
+<ul th:each="item : ${order.items}">
+    <li th:text="${item.name}"></li>
+    <li th:text="${item.price}"></li>
+</ul>
+
+
+<a href="/order">Create another order</a>
+</body>
+</html>
