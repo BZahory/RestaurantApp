@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Place an order</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form action="#" th:action="@{/manageOrders}" method="post">
+
+    <p>Both fields only take integers</p>
+
+    <p>Remove order : <input type="text" name="input1" /></p>
+    <p>Mark order as ready: <input type="text" name="input2" /></p>
+    <input type="submit">
+
+    <p>Orders</p>
+    <ul th:each="item,index : ${orders}">
+        <li th:text="${item.getReceipt}"></li>
+        <li th:text="${item.orderNumber}"></li>
+        <li th:text="${item.ready}">Ready: </li>
+    </ul>
+
+</form>
+</body>
+</html>

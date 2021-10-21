@@ -8,7 +8,7 @@
 <h1>Form</h1>
 
 <form action="#" th:action="@{/order}" th:object="${order}" method="post">
-  <p>Order Number: <input type="text" th:field="*{orderNumber}" /></p>
+  <p>Order Number (If there is a matching order, the next field will be ignored, and the matching order will be shown : <input type="text" th:field="*{orderNumber}" /></p>
   <p>Order Items (comma-separated list): <input type="text" th:field="*{itemsString}" /></p>
 
   <p>Menu:</p>

@@ -6,8 +6,7 @@
 </head>
 <body>
 <h1>Your order</h1>
-<p th:text="'id: ' + ${order.orderNumber}" />
-<p th:text="'content: ' + ${order.itemsString}" />
+<p th:text="'Order number: ' + ${order.orderNumber}" />
 
 <p>Your order:</p>
 
@@ -16,6 +15,9 @@
     <li th:text="${item.price}"></li>
 </ul>
 
+<li th:text="'Ready: ' + ${order.isReady}"></li>
+
+<p><input type="submit" value="Refresh" />
 
 <a href="/order">Create another order</a>
 </body>

@@ -16,18 +16,23 @@
     <li th:text="${item.price}"></li>
   </ul>
 
-  <p><input type="submit" value="Add" /></p>
+  <p><input type="submit" name="menuAdd" value="Add" /></p>
   <p>Order <a href="/order">here</a></p>
+  <p>Manage orders <a href="/manageOrders">here</a></p>
 
 </form>
 
-<form action="#" th:action="@{/admin}" th:object="${orders}" method="post">
+<form action="#" th:action="@{/orders}" th:object="${orders}" method="post">
 
-  <p>Menu:</p>
-  <ul th:each="order : ${orders}">
-    <li th:text="${order.getReceipt()}"></li>
-    <li th:text="${order.getNumber()}"></li>\
+  <p>Orders</p>
+  <ul th:each="item,index : ${orders}">
+    <li th:text="${item.getReceipt}"></li>
+    <li>
+      <button type="button" th:value="${index}">Remove item</button>
+    </li>
   </ul>
+
+</form>
 
 </form>
 

@@ -1,5 +1,7 @@
 package com.bzah.RestaurantWebApp;
 
+import java.io.Serializable;
+
 public class Item implements Buyable { //item must be buyable
     double price;
     String name;

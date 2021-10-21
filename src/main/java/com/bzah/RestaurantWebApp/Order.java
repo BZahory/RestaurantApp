@@ -1,12 +1,14 @@
 package com.bzah.RestaurantWebApp;
 
+import java.io.Serializable;
 import java.util.Optional;
 
-public class Order {
+public class Order{
     private long orderNumber;
     private boolean ready = false; //indicates whether the order is ready for pickup
     private Item[] items; //an array of the items in the order
     private String itemsString;
+
 
     public String getItemsString() {
         return itemsString;
@@ -45,7 +47,9 @@ public class Order {
     public boolean isReady(){ //returns the order status
         return ready;
     }
-
+    public void setReady(boolean temp){
+        this.ready = temp;
+    }
     public void processString(Menu menu){
 
         String[] itemsList = itemsString.split(",");

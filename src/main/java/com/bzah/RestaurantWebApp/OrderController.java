@@ -2,13 +2,15 @@ package com.bzah.RestaurantWebApp;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
+import java.util.Optional;
 
-@SessionAttributes({"orders","menu"})
+import static com.bzah.RestaurantWebApp.RestaurantWebAppApplication.orders;
+
+
+@SessionAttributes("menu")
 @Controller
 public class OrderController {
 
@@ -20,8 +22,6 @@ public class OrderController {
 
     @GetMapping("/order")
     public String orderForm(@ModelAttribute Menu menu, Model model) {
-        if(!model.containsAttribute("menu"))
-            return "index";
         model.addAttribute(menu);
         model.addAttribute("order", new Order());
         return "order";
@@ -29,9 +29,26 @@ public class OrderController {
 
     @PostMapping("/order")
     public String orderSubmit(@ModelAttribute Menu menu, @ModelAttribute Order order, Model model) {
-        model.addAttribute("order", order);
-        order.processString(menu);
-        return "result";
+        if(!orders.containsOrderNumber(order.getOrderNumber())) {
+            model.addAttribute("order", order);
+            order.processString(menu);
+            orders.add(order);
+            return "searchOrders";
+        }else{
+            model.addAttribute("order", orders.getOrderByNumber(order.getOrderNumber()));
+            return "searchOrders";
+        }
     }
+
+    @GetMapping("/searchOrders")
+    public String searchOrderForm(@ModelAttribute Order order, Model model)
+    {
+        return "searchOrders";
+    }
+
+    @PostMapping("/searchOrder")
+    public String searchOrderSubmit(@ModelAttribute Menu menu, @ModelAttribute Order order, Model model) {
+            return "searchOrders" + order.getOrderNumber();
+        }
 
 }
