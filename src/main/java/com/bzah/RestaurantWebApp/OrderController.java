@@ -7,21 +7,20 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-import static com.bzah.RestaurantWebApp.RestaurantWebAppApplication.orders;
+import static com.bzah.RestaurantWebApp.RestaurantWebAppApplication.*;
 
 
-@SessionAttributes("menu")
 @Controller
 public class OrderController {
 
-    public String controlMapping2(
-            @ModelAttribute("menu") final Model model) {
-        model.addAttribute("menu");
-        return "order";
-    }
+//    public String controlMapping2(
+//            @ModelAttribute("menu") final Model model) {
+//        model.addAttribute("menu");
+//        return "order";
+//    }
 
     @GetMapping("/order")
-    public String orderForm(@ModelAttribute Menu menu, Model model) {
+    public String orderForm(Model model) {
         model.addAttribute(menu);
         model.addAttribute("order", new Order());
         return "order";

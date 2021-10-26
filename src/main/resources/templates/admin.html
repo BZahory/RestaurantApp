@@ -1,8 +1,10 @@
 <!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
   <title>Place an order</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="bootstrap.css">
 </head>
 <body>
 <h1>Add item</h1>
@@ -13,7 +15,7 @@
   <p>Menu:</p>
   <ul th:each="item : ${menu.menu.values()}">
     <li th:text="${item.name}"></li>
-    <li th:text="${item.price}"></li>
+    <li th:text="${'$'+item.price}"></li>
   </ul>
 
   <p><input type="submit" name="menuAdd" value="Add" /></p>
@@ -36,5 +38,6 @@
 
 </form>
 
+<script src="bootstrap.bundle.js"></script>
 </body>
 </html>

@@ -35,11 +35,11 @@ public class Order{
         double sum = 0.0;
         for (Item x:
              items) {
-            sb.append(x.getName() + ":\t" + x.getPrice() + "\n");
+            sb.append(x.getName() + ":\t $" + x.getPrice() + "\n");
             sum += x.getPrice();
         }
 
-        sb.append("total" + ":\t" + sum);
+        sb.append("total" + ":\t $" + sum);
 
         return sb.toString();
     }

@@ -1,24 +1,34 @@
 <!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <title>Order check</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="bootstrap.css">
 </head>
-<body>
-<h1>Your order</h1>
-<p th:text="'Order number: ' + ${order.orderNumber}" />
+<body style="background-color:#242582;">
 
-<p>Your order:</p>
+<div id="search-div">
+<h1 class="form-label">Your order</h1>
+<p class="form-label" th:text="'Order number: ' + ${order.orderNumber}" />
 
-<ul th:each="item : ${order.items}">
-    <li th:text="${item.name}"></li>
-    <li th:text="${item.price}"></li>
+<h3 class="form-label">Receipt:</h3>
+
+<ul class="form-label" th:each="item : ${order.items}">
+    <li class="form-label" th:text="${item.name}"></li>
+    <li class="form-label" th:text="${'$'+item.price}"></li>
 </ul>
 
-<li th:text="'Ready: ' + ${order.isReady}"></li>
+    <hr style="color:#F64C72"/>
 
-<p><input type="submit" value="Refresh" />
+<li id="order-ready-value" th:text="${!order.isReady} ? 'Your order is not ready.' : 'Your order is ready.'"></li>
 
-<a href="/order">Create another order</a>
+<br>
+<input class="btn btn-primary" type="submit" value="Refresh" />
+
+<a class="btn btn-primary" href="/order" role="button">Create another order</a>
+</div>
+
 </body>
+<script src="bootstrap.bundle.js"></script>
 </html>

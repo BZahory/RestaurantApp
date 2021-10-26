@@ -11,14 +11,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.*;
 import java.util.ArrayList;
 
-import static com.bzah.RestaurantWebApp.RestaurantWebAppApplication.orders;
+import static com.bzah.RestaurantWebApp.RestaurantWebAppApplication.*;
 
 
-@SessionAttributes("menu")
 @Controller
 public class RestaurantController {
-
-    Menu menu = new Menu();
 
     @GetMapping("/admin")
     public String adminForm(Model model) {
@@ -57,16 +54,16 @@ public class RestaurantController {
         return "admin";
     }
 
-    @RequestMapping(value = { "/mapping1" }, method = RequestMethod.POST)
-    public String controlMapping1(
-            @ModelAttribute("menu") final Menu menu,
-            final BindingResult mapping1BindingResult,
-            final Model model,
-            final RedirectAttributes redirectAttributes) {
-
-        redirectAttributes.addFlashAttribute("menu", menu);
-
-        return "redirect:mapping2";
-    }
+//    @RequestMapping(value = { "/mapping1" }, method = RequestMethod.POST)
+//    public String controlMapping1(
+//            @ModelAttribute("menu") final Menu menu,
+//            final BindingResult mapping1BindingResult,
+//            final Model model,
+//            final RedirectAttributes redirectAttributes) {
+//
+//        redirectAttributes.addFlashAttribute("menu", menu);
+//
+//        return "redirect:mapping2";
+//    }
 
 }
