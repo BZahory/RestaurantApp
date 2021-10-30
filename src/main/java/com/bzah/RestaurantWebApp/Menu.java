@@ -20,7 +20,7 @@ public class Menu {
     }
 
 
-    public void printMenu(){ //prints the menu to the terminal
+    public void printMenu() { //prints the menu to the terminal
         System.out.println("Here is the menu:");
 
         for (Item value : menu.values()) {

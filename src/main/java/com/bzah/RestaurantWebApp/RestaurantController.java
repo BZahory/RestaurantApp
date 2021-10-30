@@ -24,6 +24,13 @@ public class RestaurantController {
         return "admin";
     }
 
+    @PostMapping("/admin")
+    public String orderSubmit(@ModelAttribute Item nextItem, Model model) {
+        menu.getMenu().put(nextItem.getName(), nextItem);
+        model.addAttribute("nextItem", new Item());
+        return "redirect:admin";
+    }
+
     @GetMapping("manageOrders")
     public String orders(Model model) {
         model.addAttribute("orders", orders);
@@ -31,27 +38,16 @@ public class RestaurantController {
     }
 
     @PostMapping("/manageOrders")
-    public String removeOrder(@RequestParam(value = "input1", required = false) String input1,
-                              @RequestParam(value = "input2", required = false) String input2,  Model model) {
-        if(input1!=null) {
-            Long index = new Long(input1.trim());
-            orders.removeOrder(index);
-        }
+    public String removeOrder(@RequestParam(value = "input1", defaultValue = "-1") String input1,
+                              @RequestParam(value = "input2", defaultValue = "-1") String input2, Model model) {
+        Long index1 = new Long(input1.trim());
+        orders.removeOrder(index1);
 
-        if(input2!=null) {
-            Long index = new Long(input2.trim());
-            orders.markOrderAsReady(index);
-        }
+        Long index2 = new Long(input2.trim());
+        orders.markOrderAsReady(index2);
+
 
         return "redirect:manageOrders";
-    }
-
-    @PostMapping(value = "/admin")
-    public String orderSubmit(@ModelAttribute Menu menu, @ModelAttribute Item nextItem, Model model,
-                              @ModelAttribute ArrayList<Order> orders) {
-        menu.getMenu().put(nextItem.getName(), nextItem);
-        model.addAttribute("nextItem", new Item());
-        return "admin";
     }
 
 //    @RequestMapping(value = { "/mapping1" }, method = RequestMethod.POST)

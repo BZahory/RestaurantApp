@@ -11364,6 +11364,24 @@ ul {
     text-align: center;
  }
 
+#manage-div{
+    height: 100%;
+    position: relative;
+    background-color: #242582;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+ }
+
+ #admin-div{
+     height: 100%;
+     position: relative;
+     background-color: #242582;
+     align-items: center;
+     justify-content: center;
+     text-align: center;
+  }
+
 #order-ready-value{
     padding: 0;
     list-style-type: none;

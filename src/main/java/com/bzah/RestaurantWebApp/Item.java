@@ -10,6 +10,7 @@ public class Item implements Buyable { //item must be buyable
         name = "";
         price = 0.00;
     }
+
     public Item(double price, String name) {
         this.price = price;
         this.name = name;

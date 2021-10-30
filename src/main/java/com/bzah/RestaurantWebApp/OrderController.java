@@ -28,26 +28,25 @@ public class OrderController {
 
     @PostMapping("/order")
     public String orderSubmit(@ModelAttribute Menu menu, @ModelAttribute Order order, Model model) {
-        if(!orders.containsOrderNumber(order.getOrderNumber())) {
+        if (!orders.containsOrderNumber(order.getOrderNumber())) {
             model.addAttribute("order", order);
             order.processString(menu);
             orders.add(order);
             return "searchOrders";
-        }else{
+        } else {
             model.addAttribute("order", orders.getOrderByNumber(order.getOrderNumber()));
             return "searchOrders";
         }
     }
 
     @GetMapping("/searchOrders")
-    public String searchOrderForm(@ModelAttribute Order order, Model model)
-    {
+    public String searchOrderForm(@ModelAttribute Order order, Model model) {
         return "searchOrders";
     }
 
     @PostMapping("/searchOrder")
     public String searchOrderSubmit(@ModelAttribute Menu menu, @ModelAttribute Order order, Model model) {
-            return "searchOrders" + order.getOrderNumber();
-        }
+        return "searchOrders" + order.getOrderNumber();
+    }
 
 }

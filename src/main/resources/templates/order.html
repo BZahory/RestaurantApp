@@ -1,43 +1,44 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
-  <title>Place an order</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="bootstrap.css">
+    <title>Place an order</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="bootstrap.css">
 </head>
 <body style="background-color:#242582;">
 
 <div id="order-div">
-<form action="#" class="form-div" th:action="@{/order}" th:object="${order}" method="post">
+    <form action="#" class="form-div" th:action="@{/order}" th:object="${order}" method="post">
 
-  <h3 class="form-label">Place an order</h3>
+        <h3 class="form-label">Place an order</h3>
 
-  <h5 class="form-label">Just put in your order number to search for an order that already exists.</h5>
+        <h5 class="form-label">Just put in your order number to search for an order that already exists.</h5>
 
-  <label class="form-label" for="orderNumberInput">
-    Order Number
-    </label>
+        <label class="form-label" for="orderNumberInput">
+            Order Number
+        </label>
 
-  <input class="form-control" placeholder="0" id='orderNumberInput' type="text" th:field="*{orderNumber}" />
+        <input class="form-control" placeholder="0" id='orderNumberInput' type="text" th:field="*{orderNumber}"/>
 
-  <label class="form-label" for="orderInput">Order Items <br> (comma-separated list)</label>
+        <label class="form-label" for="orderInput">Order Items <br> (comma-separated list)</label>
 
-  <input class="form-control" placeholder="item1,item2,etc." id="orderInput"type="text" th:field="*{itemsString}" />
+        <input class="form-control" placeholder="item1,item2,etc." id="orderInput" type="text"
+               th:field="*{itemsString}"/>
 
-  <br>
+        <br>
 
-  <input class="btn btn-primary" type="submit" value="Submit" />
+        <input class="btn btn-primary" type="submit" value="Submit"/>
 
-</form>
+    </form>
 
-<div class="form-div">
-<h3 class="form-div">Menu</h3>
-<ul class="form-div list-group" th:each="item : ${menu.menu.values()}">
-  <li class="form-div list-group-item" th:text="${item.name}"></li>
-  <li class="form-div list-group-item" th:text="${'$'+item.price}"></li>
-</ul>
-</div>
+    <div class="form-div">
+        <h3 class="form-div">Menu</h3>
+        <ul class="form-div list-group" th:each="item : ${menu.menu.values()}">
+            <li class="form-div list-group-item" th:text="${item.name}"></li>
+            <li class="form-div list-group-item" th:text="${'$'+item.price}"></li>
+        </ul>
+    </div>
 
 </div>
 

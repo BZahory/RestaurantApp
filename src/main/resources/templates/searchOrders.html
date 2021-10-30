@@ -2,31 +2,31 @@
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <title>Order check</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 <body style="background-color:#242582;">
 
 <div id="search-div">
-<h1 class="form-label">Your order</h1>
-<p class="form-label" th:text="'Order number: ' + ${order.orderNumber}" />
+    <h1 class="form-label">Your order</h1>
+    <p class="form-label" th:text="'Order number: ' + ${order.orderNumber}"/>
 
-<h3 class="form-label">Receipt:</h3>
+    <h3 class="form-label">Receipt:</h3>
 
-<ul class="form-label" th:each="item : ${order.items}">
-    <li class="form-label" th:text="${item.name}"></li>
-    <li class="form-label" th:text="${'$'+item.price}"></li>
-</ul>
+    <ul class="form-label" th:each="item : ${order.items}">
+        <li class="form-label" th:text="${item.name}"></li>
+        <li class="form-label" th:text="${'$'+item.price}"></li>
+    </ul>
 
     <hr style="color:#F64C72"/>
 
-<li id="order-ready-value" th:text="${!order.isReady} ? 'Your order is not ready.' : 'Your order is ready.'"></li>
+    <li id="order-ready-value" th:text="${!order.isReady} ? 'Your order is not ready.' : 'Your order is ready.'"></li>
 
-<br>
-<input class="btn btn-primary" type="submit" value="Refresh" />
 
-<a class="btn btn-primary" href="/order" role="button">Create another order</a>
+    <input class="btn btn-primary" type="submit" value="Refresh"/>
+
+    <a class="btn btn-primary" href="/order" role="button">Create another order</a>
 </div>
 
 </body>

@@ -8,12 +8,11 @@ import java.util.ArrayList;
 @SpringBootApplication
 public class RestaurantWebAppApplication {
 
+    static Orders orders = new Orders();
+    static Menu menu = new Menu();
 
-	static Orders orders = new Orders();
-	static Menu menu = new Menu();
-
-	public static void main(String[] args) {
-		SpringApplication.run(RestaurantWebAppApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(RestaurantWebAppApplication.class, args);
+    }
 
 }

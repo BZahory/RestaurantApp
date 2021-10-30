@@ -2,25 +2,32 @@
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <title>Place an order</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 <body>
 <form action="#" th:action="@{/manageOrders}" method="post">
 
-    <p>Both fields only take integers</p>
+    <div id="manage-div">
+        <h3 class="form-label">Both fields only a single order number</h3>
 
-    <p>Remove order : <input type="text" name="input1" /></p>
-    <p>Mark order as ready: <input type="text" name="input2" /></p>
-    <input type="submit">
+        <h3 class="form-label">Remove order : <input class="form-control" type="text" name="input1"/></h3>
+        <h3 class="form-label">Mark order as ready: <input class="form-control" type="text" name="input2"/></h3>
+        <input class="btn btn-primary" type="submit">
 
-    <p>Orders</p>
-    <ul th:each="item,index : ${orders}">
-        <li th:text="${item.getReceipt}"></li>
-        <li th:text="${item.orderNumber}"></li>
-        <li th:text="${item.ready}">Ready: </li>
-    </ul>
+        <br>
+
+        <h1 class="form-label">Orders</h1>
+        <ul class="form-div list-group" th:each="item,index : ${orders}">
+            <li class="form-div list-group-item" th:text="${item.getReceipt}"></li>
+            <li class="form-div list-group-item" th:text="'Order number: '+${item.orderNumber}"></li>
+            <li class="form-div list-group-item"
+                th:text="${!item.isReady} ? 'This order is not ready.' : 'This order is ready.'">Ready:
+            </li>
+        </ul>
+
+    </div>
 
 </form>
 <script src="bootstrap.bundle.js"></script>

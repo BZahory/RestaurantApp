@@ -1,42 +1,36 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
-  <title>Place an order</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="bootstrap.css">
+    <title>Place an order</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="bootstrap.css">
 </head>
-<body>
-<h1>Add item</h1>
-<form action="#" th:action="@{/admin}" th:object="${nextItem}" method="post">
-  <p>Name: <input type="text" th:field="*{name}" /></p>
-  <p>Price: <input type="text" th:field="*{price}" /></p>
+<body style="background-color:#242582;">
 
-  <p>Menu:</p>
-  <ul th:each="item : ${menu.menu.values()}">
-    <li th:text="${item.name}"></li>
-    <li th:text="${'$'+item.price}"></li>
-  </ul>
+<div id="order-div">
+    <div class="form-div">
+        <h1 class="form-label">Add item</h1>
+        <form action="#" th:action="@{/admin}" th:object="${nextItem}" method="post">
+            <h3 class="form-label">Name: <input class="form-control" type="text" th:field="*{name}"/></h3>
+            <h3 class="form-label">Price: <input class="form-control" type="text" th:field="*{price}"/></h3>
+            <input class="btn btn-primary" type="submit" name="menuAdd" value="Add"/>
 
-  <p><input type="submit" name="menuAdd" value="Add" /></p>
-  <p>Order <a href="/order">here</a></p>
-  <p>Manage orders <a href="/manageOrders">here</a></p>
+            <a class="btn btn-primary" href="/manageOrders" role="button">Manage orders</a>
 
-</form>
+        </form>
 
-<form action="#" th:action="@{/orders}" th:object="${orders}" method="post">
+    </div>
 
-  <p>Orders</p>
-  <ul th:each="item,index : ${orders}">
-    <li th:text="${item.getReceipt}"></li>
-    <li>
-      <button type="button" th:value="${index}">Remove item</button>
-    </li>
-  </ul>
+    <div class="form-div" th:object="${nextItem}">
+        <h3 class="form-label">Menu:</h3>
+        <ul class="form-div" th:each="item : ${menu.menu.values}">
+            <li class="form-div" th:text="${item.name}"></li>
+            <li class="form-div" th:text="${'$'+item.price}"></li>
+        </ul>
+    </div>
 
-</form>
-
-</form>
+</div>
 
 <script src="bootstrap.bundle.js"></script>
 </body>
