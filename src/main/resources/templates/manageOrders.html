@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="bootstrap.css">
 </head>
-<body>
+<body style="background-color:#242582;">
 <form action="#" th:action="@{/manageOrders}" method="post">
 
-    <div id="manage-div">
-        <h3 class="form-label">Both fields only a single order number</h3>
+    <div class="general-div">
+        <h3 class="form-label">Both fields only take a single order number</h3>
 
         <h3 class="form-label">Remove order : <input class="form-control" type="text" name="input1"/></h3>
         <h3 class="form-label">Mark order as ready: <input class="form-control" type="text" name="input2"/></h3>
@@ -19,6 +19,7 @@
         <br>
 
         <h1 class="form-label">Orders</h1>
+        <!--  Iterate through the Order objects in the Orders object, then display all relevant attributes  -->
         <ul class="form-div list-group" th:each="item,index : ${orders}">
             <li class="form-div list-group-item" th:text="${item.getReceipt}"></li>
             <li class="form-div list-group-item" th:text="'Order number: '+${item.orderNumber}"></li>

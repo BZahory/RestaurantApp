@@ -2,23 +2,32 @@ package com.bzah.RestaurantWebApp;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 import static com.bzah.RestaurantWebApp.RestaurantWebAppApplication.*;
 
+/**
+ * Represents an array of items.
+ *
+ * @author Bilal Zahory
+ * @author www.bzah.bz
+ */
 
 @Controller
 public class OrderController {
-
+// Deprecated in favor of global methods
 //    public String controlMapping2(
 //            @ModelAttribute("menu") final Model model) {
 //        model.addAttribute("menu");
 //        return "order";
 //    }
 
+    /**
+     * Handles HTTP GET requests for the /admin page.
+     *
+     * @param model Contains attributes visible to Thymeleaf.
+     * @return The current page.
+     */
     @GetMapping("/order")
     public String orderForm(Model model) {
         model.addAttribute(menu);
@@ -26,8 +35,15 @@ public class OrderController {
         return "order";
     }
 
+    /**
+     * Processes form input for adding/searching for Orders.
+     *
+     * @param order The Order to be added.
+     * @param model Contains attributes visible to Thymeleaf.
+     * @return The current page.
+     */
     @PostMapping("/order")
-    public String orderSubmit(@ModelAttribute Menu menu, @ModelAttribute Order order, Model model) {
+    public String orderSubmit(@ModelAttribute Order order, Model model) {
         if (!orders.containsOrderNumber(order.getOrderNumber())) {
             model.addAttribute("order", order);
             order.processString(menu);
@@ -39,14 +55,17 @@ public class OrderController {
         }
     }
 
+    /**
+     * Handles HTTP GET requests for the /admin page.
+     *
+     * @param order
+     * @param model Contains attributes visible to Thymeleaf.
+     * @return The current page.
+     */
     @GetMapping("/searchOrders")
     public String searchOrderForm(@ModelAttribute Order order, Model model) {
         return "searchOrders";
     }
 
-    @PostMapping("/searchOrder")
-    public String searchOrderSubmit(@ModelAttribute Menu menu, @ModelAttribute Order order, Model model) {
-        return "searchOrders" + order.getOrderNumber();
-    }
 
 }

@@ -8,8 +8,8 @@
 </head>
 <body style="background-color:#242582;">
 
-<div id="order-div">
-    <div class="form-div">
+<div class="general-div">
+    <div class="general-div">
         <h1 class="form-label">Add item</h1>
         <form action="#" th:action="@{/admin}" th:object="${nextItem}" method="post">
             <h3 class="form-label">Name: <input class="form-control" type="text" th:field="*{name}"/></h3>
@@ -22,8 +22,9 @@
 
     </div>
 
-    <div class="form-div" th:object="${nextItem}">
+    <div class="general-div" th:object="${nextItem}">
         <h3 class="form-label">Menu:</h3>
+        <!--  Iterate through the Items on the Menu, then shows their names and prices as a list  -->
         <ul class="form-div" th:each="item : ${menu.menu.values}">
             <li class="form-div" th:text="${item.name}"></li>
             <li class="form-div" th:text="${'$'+item.price}"></li>

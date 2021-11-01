@@ -11263,7 +11263,11 @@ textarea.form-control-lg {
   }
 }
 
-/* index.html styling */
+/* my styling */
+
+/*
+ * index-div is only used for the index page, due to its unique styling requirements
+ */
 
 #index-div {
     width: 100%;
@@ -11272,6 +11276,7 @@ textarea.form-control-lg {
     align-items: center;
     background-color: #242582;
 }
+
 a.index-div {
     display: flex;
     height: 45%;
@@ -11283,9 +11288,11 @@ a.index-div {
     color:#f8f9fa;
     border:.25em solid #99738E;
 }
+
 a.index-div:hover {
     background-color: #F64C72;
 }
+
 p.index-div {
     display: flex;
     height: 10%;
@@ -11297,6 +11304,18 @@ p.index-div {
     color:#f8f9fa;
 }
 
+
+/* Sets a general style for the website */
+.general-div{
+    height: 100%;
+    position: relative;
+    background-color: #242582;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+ }
+
+/* Same as general-div, but with different properties for its children */
 .form-div {
     flex: 1;
     height: 100%;
@@ -11307,7 +11326,8 @@ p.index-div {
     background-color: #242582;
 }
 
-button.form-div, input.form-div{ /* Allows centering */
+/* Allows centering of these elements */
+button.form-div, input.form-div{
     margin: 0 auto;
 }
 
@@ -11343,46 +11363,14 @@ input.form-control {
     color: #f8f9fa;
 }
 
+/* Removes bullet points from list objects */
 ul {
     padding: 0;
     list-style-type: none;
  }
 
-#order-div{
-   display: flex;
-   height: 100%;
-   position: relative;
-   background-color: #242582;
-}
 
-#search-div{
-    height: 100%;
-    position: relative;
-    background-color: #242582;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
- }
-
-#manage-div{
-    height: 100%;
-    position: relative;
-    background-color: #242582;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
- }
-
- #admin-div{
-     height: 100%;
-     position: relative;
-     background-color: #242582;
-     align-items: center;
-     justify-content: center;
-     text-align: center;
-  }
-
-#order-ready-value{
+#order-ready-value{ /* Removes bullet points from object, and updates the color */
     padding: 0;
     list-style-type: none;
     color: #f8f9fa;

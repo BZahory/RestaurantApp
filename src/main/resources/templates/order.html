@@ -8,7 +8,7 @@
 </head>
 <body style="background-color:#242582;">
 
-<div id="order-div">
+<div class="general-div">
     <form action="#" class="form-div" th:action="@{/order}" th:object="${order}" method="post">
 
         <h3 class="form-label">Place an order</h3>
@@ -19,6 +19,7 @@
             Order Number
         </label>
 
+        <!--  The 0 will be ignored when passed to the Java back end  -->
         <input class="form-control" placeholder="0" id='orderNumberInput' type="text" th:field="*{orderNumber}"/>
 
         <label class="form-label" for="orderInput">Order Items <br> (comma-separated list)</label>
@@ -32,8 +33,9 @@
 
     </form>
 
-    <div class="form-div">
+    <div class="general-div">
         <h3 class="form-div">Menu</h3>
+        <!--  Iterate through the Items on the Menu, then shows their names and prices as a list  -->
         <ul class="form-div list-group" th:each="item : ${menu.menu.values()}">
             <li class="form-div list-group-item" th:text="${item.name}"></li>
             <li class="form-div list-group-item" th:text="${'$'+item.price}"></li>

@@ -8,12 +8,13 @@
 </head>
 <body style="background-color:#242582;">
 
-<div id="search-div">
+<div class="general-div">
     <h1 class="form-label">Your order</h1>
     <p class="form-label" th:text="'Order number: ' + ${order.orderNumber}"/>
 
     <h3 class="form-label">Receipt:</h3>
 
+    <!--  Iterate through the Items in the order and show their names and prices as a list.  -->
     <ul class="form-label" th:each="item : ${order.items}">
         <li class="form-label" th:text="${item.name}"></li>
         <li class="form-label" th:text="${'$'+item.price}"></li>
@@ -21,7 +22,10 @@
 
     <hr style="color:#F64C72"/>
 
-    <li id="order-ready-value" th:text="${!order.isReady} ? 'Your order is not ready.' : 'Your order is ready.'"></li>
+    <!--  Check if the Order object's 'isReady' boolean is true, then display the appropriate message. -->
+    <li id="order-ready-value"
+        th:text="${!order.isReady} ? 'Your order is not ready.' : 'Your order is ready.'">
+    </li>
 
 
     <input class="btn btn-primary" type="submit" value="Refresh"/>
