@@ -58,7 +58,7 @@ public class OrderController {
     /**
      * Handles HTTP GET requests for the /admin page.
      *
-     * @param order
+     * @param order The target Order.
      * @param model Contains attributes visible to Thymeleaf.
      * @return The current page.
      */

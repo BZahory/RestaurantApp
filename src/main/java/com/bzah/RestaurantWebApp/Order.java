@@ -25,10 +25,10 @@ public class Order {
         return items;
     }
 
+
     /**
      * Sets the itemsString class variable.
-     * @link{#processStrings(Menu)} is used to actually create the items array.
-     *
+     * {@link #processString(Menu)} is used to actually create the items array.
      * @param orderInput The comma-separated list of desired items.
      */
     public void setItems(String orderInput) {
